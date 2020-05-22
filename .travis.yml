@@ -4,8 +4,12 @@ language: ruby
 cache: bundler
 services:
   - docker
+  - postgresql
 rvm:
   - 2.6.1
 before_install: gem install bundler -v 2.0.1
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
 script:
   - bundle exec rspec
