@@ -1,9 +1,22 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # Devise
-  devise_for :users, :controllers => {:registrations => "registration/registrations"}
 
+  root 'admin/orders#index'
 
-  root 'welcome#index'
+  namespace :admin do
+    resources :users
+    resources :addresses
+    resources :orders
+    resources :products
+
+    root to: 'orders#index'
+  end
+
+  devise_for :users, controllers: {
+    registrations: 'registration/registrations',
+    sessions: 'sessions'
+  }
 
   resources :orders, only: [:create]
 end
