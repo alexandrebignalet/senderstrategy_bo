@@ -10,10 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_113430) do
+ActiveRecord::Schema.define(version: 2020_05_23_142357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "name_original"
+    t.string "street_original"
+    t.string "code"
+    t.string "town"
+    t.string "country"
+    t.string "delivery_phone"
+    t.string "email"
+    t.string "address_note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "id_distributors"
+    t.string "payment_method"
+    t.string "transaction_id"
+    t.string "transaction_mode"
+    t.string "transaction_state"
+    t.string "transaction_percent"
+    t.string "tva_reference"
+    t.string "import_url"
+    t.string "coupon"
+    t.string "amount"
+    t.string "god_father"
+    t.boolean "shipping_direct"
+    t.boolean "is_shipped"
+    t.string "how_known"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "shipping_address_id"
+    t.string "billing_address_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_type"
+    t.string "product_category"
+    t.string "number"
+    t.string "pricing"
+    t.string "unit"
+    t.string "subtotal"
+    t.string "shipping"
+    t.string "total"
+    t.string "mode"
+    t.string "tax"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_products_on_order_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +78,5 @@ ActiveRecord::Schema.define(version: 2020_05_22_113430) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "orders"
 end
