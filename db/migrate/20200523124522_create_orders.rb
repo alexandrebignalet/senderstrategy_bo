@@ -17,6 +17,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :how_known
 
       t.timestamps
+      t.references :shipping_address
+      t.references :billing_address
     end
   end
 end

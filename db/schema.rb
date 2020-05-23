@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_142357) do
     t.string "address_note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_addresses_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -45,8 +47,10 @@ ActiveRecord::Schema.define(version: 2020_05_23_142357) do
     t.string "how_known"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "shipping_address_id"
-    t.string "billing_address_id"
+    t.bigint "shipping_address_id"
+    t.bigint "billing_address_id"
+    t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
+    t.index ["shipping_address_id"], name: "index_orders_on_shipping_address_id"
   end
 
   create_table "products", force: :cascade do |t|
