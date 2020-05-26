@@ -30,3 +30,11 @@
 .spaced {
     padding-top: 10px;
 }
+
+.button-success {
+    background-color: forestgreen !important;
+}
+
+.margin-left {
+    margin-left: 15px;
+}
