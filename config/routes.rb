@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :addresses
-    resources :orders
+    resources :orders do
+      collection do
+        get 'export'
+      end
+    end
     resources :products
 
     root to: 'orders#index'
