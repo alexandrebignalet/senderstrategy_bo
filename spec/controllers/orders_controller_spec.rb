@@ -18,7 +18,7 @@ RSpec.describe OrdersController, type: :request do
     order_products = created_order.products
 
     # response
-    expect(response.body).to eq({ contentTab: [{ idOrders: created_order.id }] }.to_json)
+    expect(response.body).to eq([{ idOrders: created_order.id }].to_json)
 
     # order
     expect(created_order.id_distributors).to eq(input[:idDistributors])

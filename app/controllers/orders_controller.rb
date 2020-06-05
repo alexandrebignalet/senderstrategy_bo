@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   respond_to :json
 
   def create
-    render json: CreateOrder.new(params).call, status: :created
+    order = CreateOrder.new(params).call
+    render json: [{ idOrders: order.id }], status: :created
   end
 end

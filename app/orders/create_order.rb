@@ -17,7 +17,7 @@ class CreateOrder
 
       order.save
 
-      CreateOrderResponse.from order
+      order
     end
   end
 end
