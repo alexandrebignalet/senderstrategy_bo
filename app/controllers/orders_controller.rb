@@ -3,8 +3,6 @@ class OrdersController < ApplicationController
   respond_to :json
 
   def create
-    CreateOrder.new(params).call
-
-    head :created
+    render json: CreateOrder.new(params).call, status: :created
   end
 end

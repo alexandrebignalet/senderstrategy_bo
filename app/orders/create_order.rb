@@ -16,6 +16,8 @@ class CreateOrder
       order.products << @products_params.map { |p| Product.from_dto(p) }
 
       order.save
+
+      CreateOrderResponse.from order
     end
   end
 end

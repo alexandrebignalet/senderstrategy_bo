@@ -17,6 +17,9 @@ RSpec.describe OrdersController, type: :request do
     billing_address = created_order.billing_address
     order_products = created_order.products
 
+    # response
+    expect(response.body).to eq({ contentTab: [{ idOrders: created_order.id }] }.to_json)
+
     # order
     expect(created_order.id_distributors).to eq(input[:idDistributors])
     expect(created_order.payment_method).to eq(input[:paymentMethod])
