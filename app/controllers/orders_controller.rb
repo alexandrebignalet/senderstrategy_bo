@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
   def checkout
     session = CheckoutOrder.new(checkout_params).call
-    render json: { session: { id: session } }, status: :created
+    render json: { session: session }, status: :created
   end
 
   private
