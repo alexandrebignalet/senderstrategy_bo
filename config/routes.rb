@@ -22,5 +22,9 @@ Rails.application.routes.draw do
     sessions: 'sessions'
   }
 
-  resources :orders, only: [:create]
+  resources :orders, only: [:create] do
+    collection do
+      post 'checkout'
+    end
+  end
 end
