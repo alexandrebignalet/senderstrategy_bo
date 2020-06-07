@@ -30,6 +30,7 @@ class OrderDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     shipping_address_id: Field::String,
     billing_address_id: Field::String,
+    payment_id: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -38,8 +39,13 @@ class OrderDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
+  shipping_address
+  billing_address
+  products
   id
   id_distributors
+  payment_id
+  payment_method
   transaction_id
   transaction_mode
   transaction_state
@@ -48,9 +54,14 @@ class OrderDashboard < Administrate::BaseDashboard
   import_url
   coupon
   amount
+  god_father
   shipping_direct
   is_shipped
+  how_known
   created_at
+  updated_at
+  shipping_address_id
+  billing_address_id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -61,6 +72,7 @@ class OrderDashboard < Administrate::BaseDashboard
   products
   id
   id_distributors
+  payment_id
   payment_method
   transaction_id
   transaction_mode

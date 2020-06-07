@@ -34,6 +34,16 @@ class ProductDashboard < Administrate::BaseDashboard
   id
   product_type
   product_category
+  number
+  pricing
+  unit
+  subtotal
+  shipping
+  total
+  mode
+  tax
+  created_at
+  updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

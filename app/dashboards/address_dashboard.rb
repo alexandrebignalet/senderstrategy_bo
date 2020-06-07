@@ -30,6 +30,14 @@ class AddressDashboard < Administrate::BaseDashboard
   id
   name_original
   street_original
+  code
+  town
+  country
+  delivery_phone
+  email
+  address_note
+  created_at
+  updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
